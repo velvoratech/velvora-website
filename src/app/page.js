@@ -34,7 +34,7 @@ export default function Home() {
           {/* Social Media Links */}
           <div className="flex flex-wrap justify-center gap-5 mb-4">
             <a 
-              href="https://instagram.com/velvoratech" 
+              href="https://velvoratech.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
@@ -44,7 +44,7 @@ export default function Home() {
             </a>
             
             <a 
-              href="https://linkedin.com/company/velvora" 
+              href="https://velvoratech.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
