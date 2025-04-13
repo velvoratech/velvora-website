@@ -11,6 +11,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'melodrama': ['var(--font-melodrama)'],
+        'clash-display': ['var(--font-clash-display)'],
+      },
     },
   },
   plugins: [],

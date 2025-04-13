@@ -4,18 +4,20 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-background text-foreground;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  
+  /* Define font families for the custom fonts */
+  .font-melodrama {
+    font-family: var(--font-melodrama), serif;
+  }
+  
+  .font-clash-display {
+    font-family: var(--font-clash-display), sans-serif;
+  }
 }
