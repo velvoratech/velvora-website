@@ -21,3 +21,24 @@
     font-family: var(--font-clash-display), sans-serif;
   }
 }
+
+@font-face {
+  font-family: 'ClashDisplay-Medium';
+  src: url('/fonts/ClashDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Extralight';
+  src: url('/fonts/ClashDisplay-Extralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+.text-shadow {
+  text-shadow: 0 0 10px rgba(255, 255, 227, 0.7), 0 0 20px rgba(255, 255, 227, 0.3);
+}
