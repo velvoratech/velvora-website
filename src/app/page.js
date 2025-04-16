@@ -1,5 +1,6 @@
 'use client'
 import Header from "./components/Header";
+import Services from "./components/Services";
 import Footer from "./components/Footer";
 import Vision from "./components/Vision";
 import TechStack from "./components/TechStack";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
     <Header />
+    <Services />
     <VelvoraMarquee />
     <ChooseUs />
     <TechStack />
