@@ -32,13 +32,24 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-auto">
             {/* Social icons - centered on mobile, left on desktop */}
             <div className="flex gap-6 md:order-1">
-              <Link href="https://otieu.com/4/10073375" className="text-black hover:opacity-70 transition-opacity">
-                <FaInstagram size={28} />
-              </Link>
-              <Link href="https://otieu.com/4/10073375" className="text-black hover:opacity-70 transition-opacity">
-                <FaLinkedinIn size={28} />
-              </Link>
-            </div>
+  <a
+    href="https://otieu.com/4/10073375"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-black hover:opacity-70 transition-opacity"
+  >
+    <FaInstagram size={28} />
+  </a>
+  <a
+    href="https://otieu.com/4/10073375"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-black hover:opacity-70 transition-opacity"
+  >
+    <FaLinkedinIn size={28} />
+  </a>
+</div>
+
             
             {/* Email - centered on mobile, left on desktop */}
             <a 
