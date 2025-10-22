@@ -20,16 +20,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://3nbf4.com/act/files/tag.min.js?z=10073191"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        
-        <Script
-          src="https://3nbf4.com/act/files/tag.min.js?z=10073191"
-          strategy="afterInteractive"
-          async
-        />
       </body>
     </html>
   );
