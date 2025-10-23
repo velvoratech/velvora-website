@@ -1,5 +1,11 @@
 import React from "react";
-import { IconBrush, IconCode, IconDeviceDesktop, IconBuilding, IconMicrophone } from "@tabler/icons-react";
+import {
+  IconCode,
+  IconDeviceDesktop,
+  IconSettingsAutomation,
+  IconPuzzle,
+  IconRocket
+} from "@tabler/icons-react";
 import localFont from 'next/font/local';
 
 const clashDisplay = localFont({ 
@@ -10,33 +16,33 @@ const clashDisplay = localFont({
 
 export default function Services() {
   // Service data with icons and content
-  const services = [
-    {
-      icon: <IconCode size={32} color="#000" />,
-      title: "Web Development",
-      description: "Custom websites and web applications tailored to your needs."
-    },
-    {
-      icon: <IconDeviceDesktop size={32} color="#000" />,
-      title: "UI/UX Design",
-      description: "Intuitive interfaces and engaging user experiences."
-    },
-    {
-      icon: <IconBrush size={32} color="#000" />,
-      title: "Branding",
-      description: "Visual identity development and brand strategy."
-    },
-    {
-      icon: <IconBuilding size={32} color="#000" />,
-      title: "Business Solutions",
-      description: "Comprehensive digital strategies for business growth."
-    },
-    {
-      icon: <IconMicrophone size={32} color="#000" />,
-      title: "Digital Marketing",
-      description: "Strategic campaigns to enhance your online presence and reach."
-    }
-  ];
+const services = [
+  {
+    icon: <IconCode size={32} color="#000" />,
+    title: "Web Development",
+    description: "Responsive, high-performance websites tailored to your brand."
+  },
+  {
+    icon: <IconDeviceDesktop size={32} color="#000" />,
+    title: "Customized Software Development",
+    description: "Bespoke software solutions built around your unique needs."
+  },
+  {
+    icon: <IconSettingsAutomation size={32} color="#000" />,
+    title: "Automated Workflows",
+    description: "Streamline operations through intelligent automation."
+  },
+  {
+    icon: <IconPuzzle size={32} color="#000" />,
+    title: "Technical Consulting",
+    description: "Strategic guidance and architecture for scalable digital solutions."
+  },
+  {
+    icon: <IconRocket size={32} color="#000" />,
+    title: "Product Prototyping / MVP Development",
+    description: "Transforming ideas into functional prototypes to validate and launch faster."
+  }
+];
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-black px-4 sm:px-6 md:px-8">

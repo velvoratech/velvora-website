@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Velvora Technologies",
-  description: "Velvora Technologies Coming Soon!"
+  description: "Velvora Technologies"
 };
 
 export default function RootLayout({ children }) {

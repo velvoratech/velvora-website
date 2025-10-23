@@ -15,7 +15,7 @@ const clashDisplayLight = localFont({
 
 const Vision = () => {
   return (
-    <div className="bg-black py-16 px-6 md:px-16">
+    <div className="bg-black py-16 px-6 md:px-16 lg:-mt-[450px]">
       <div className="max-w-7xl mx-auto">
         <div className={`${clashDisplay.variable} border border-[#EDD594] p-12 md:p-16`}>
           {/* Vision Title */}

@@ -5,7 +5,6 @@ import React from 'react';
 export default function ChooseUs() {
   const points = [
     "Exceptional quality and attention to detail in every project we deliver",
-    "Dedicated team of experts with years of industry experience",
     "Personalized solutions tailored to your specific needs and requirements",
     "Transparent communication and collaborative approach throughout the process"
   ];

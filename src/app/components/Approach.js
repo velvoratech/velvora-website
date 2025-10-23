@@ -163,16 +163,12 @@ const Approach = () => {
         <div className="
           mt-8 max-w-full ml-[20px]
           md:ml-[200px]
-          lg:ml-[560px]
+          lg:ml-[750px]
         ">
           <h2 className="text-2xl md:text-3xl font-[ClashDisplayBold] text-[#EDD594] mb-2">Discovery Call</h2>
           <p className="text-[#FFFFE3] max-w-xs font-[ClashDisplay] text-xs md:text-sm"
-          style={{ fontFamily: '"ClashDisplay-Extralight", sans-serif' }}>
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
+          style={{ fontFamily: '"ClashDisplay", sans-serif' }}>
+          Our initial discovery call helps us understand your unique business challenges and goals. We collaborate closely to identify opportunities, gather essential insights, and tailor strategies that align with your vision.
           </p>
         </div>
 
@@ -180,16 +176,12 @@ const Approach = () => {
         <div className="
           text-right mt-12 max-w-full mr-[30px]
           md:mr-[200px]
-          lg:mr-[550px] lg:mt-12
+          lg:mr-[750px] lg:mt-20
         ">
           <h2 className="text-2xl md:text-3xl font-medium text-[#EDD594] mb-2 font-[ClashDisplayBold]">Solution Design</h2>
           <p className="text-[#FFFFE3] max-w-xs ml-auto font-[ClashDisplay] text-xs md:text-sm"
-          style={{ fontFamily: '"ClashDisplay-Extralight", sans-serif' }}>
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
+          style={{ fontFamily: '"ClashDisplay", sans-serif' }}>
+            In the solution design phase, we create customized strategies and innovative solutions that address your specific needs. Leveraging the latest technologies and industry best practices, we craft scalable, future-proof business models that drive growth and maximize ROI.
           </p>
         </div>
 
@@ -197,16 +189,12 @@ const Approach = () => {
         <div className="
           mt-16 max-w-full ml-[30px]
           md:ml-[200px]
-          lg:ml-[550px] lg:mt-24
+          lg:ml-[750px] lg:mt-24
         ">
           <h2 className="text-2xl md:text-3xl font-medium text-[#EDD594] mb-2 font-[ClashDisplayBold]">Development</h2>
           <p className="text-[#FFFFE3] max-w-xs font-[ClashDisplay] text-xs md:text-sm"
-          style={{ fontFamily: '"ClashDisplay-Extralight", sans-serif' }}>
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
+          style={{ fontFamily: '"ClashDisplay", sans-serif' }}>
+           Our team transforms the solution design into a fully functional product. We focus on delivering high-quality, reliable, and user-friendly software tailored to streamline your operations and enhance customer experience, ensuring your business stays competitive in a digital-first world.
           </p>
         </div>
 
@@ -214,16 +202,12 @@ const Approach = () => {
         <div className="
           mb-8 mt-16 text-right max-w-full mr-[30px]
           md:mr-[200px] md:mb-8
-          lg:mr-[580px] lg:mt-16
+          lg:mr-[750px] lg:mt-16
         ">
           <h2 className="text-2xl md:text-3xl font-medium text-[#EDD594] mb-2 font-[ClashDisplayBold]">Launch & Support</h2>
           <p className="text-[#FFFFE3] max-w-xs ml-auto font-[ClashDisplay] text-xs md:text-sm"
-          style={{ fontFamily: '"ClashDisplay-Extralight", sans-serif' }}>
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
-            lorem ipsum dolor 623452634523452345
+          style={{ fontFamily: '"ClashDisplay", sans-serif' }}>
+           We guide your business through a seamless product launch, ensuring minimal downtime and maximum impact. Post-launch, our team provides continuous monitoring, maintenance, and updates to keep your business running smoothly and adapt to evolving market demands.
           </p>
         </div>
       </div>
