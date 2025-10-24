@@ -51,7 +51,7 @@ const Header = () => {
           {/* Buttons container - right aligned on all screens */}
           <div className="relative md:absolute md:right-4 flex items-center gap-3 sm:gap-4">
             {/* Our Products button */}
-            <Link href="/" passHref>
+            <Link href="/products" passHref>
               <button className="group relative">
                 {/* Button inner content with responsive padding and font size */}
                 <div className="relative rounded-lg px-4 py-2 sm:px-6 sm:py-2 md:px-8 md:py-3 backdrop-blur-xl bg-white/10 text-white overflow-hidden z-10 transition-colors duration-300 group-hover:bg-[#EDD594] group-hover:text-black">
