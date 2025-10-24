@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Download, FileCheck, Heart } from 'lucide-react';
+import PrivacyPolicy from '../PrivacyPolicy';
 
 export default function ProductsPage() {
   const [loading, setLoading] = useState(false);
@@ -151,7 +152,10 @@ export default function ProductsPage() {
   <p className="text-slate-400 text-sm italic">
     ⚠️ Note: The UI of this page is different from our main site. The designer of the main page is busy with personal matters, and I didn’t want to disturb him 😉
   </p>
+  <br></br><br></br>
+  <PrivacyPolicy />
 </div>
+
     </div>
   );
 }
