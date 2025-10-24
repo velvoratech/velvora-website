@@ -33,7 +33,7 @@ const Footer = () => {
             {/* Social icons - centered on mobile, left on desktop */}
             <div className="flex gap-6 md:order-1">
   <a
-    href="https://otieu.com/4/10073375"
+    href="/"
     target="_blank"
     rel="noopener noreferrer"
     className="text-black hover:opacity-70 transition-opacity"
@@ -41,7 +41,7 @@ const Footer = () => {
     <FaInstagram size={28} />
   </a>
   <a
-    href="https://otieu.com/4/10073375"
+    href="/"
     target="_blank"
     rel="noopener noreferrer"
     className="text-black hover:opacity-70 transition-opacity"
