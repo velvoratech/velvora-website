@@ -1,27 +1,30 @@
 import Razorpay from "razorpay";
 
+const razorpay = new Razorpay({
+  key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // public key for client
+  key_secret: process.env.RAZORPAY_KEY_SECRET,      // secret for server only
+});
+
 export async function POST(req) {
   try {
-    const instance = new Razorpay({
-      key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-      key_secret: process.env.RAZORPAY_KEY_SECRET,
-    });
+    const amount = 18 * 100; // ₹18 in paise
+    const currency = "INR";
 
     const options = {
-      amount: 18 * 100, // ₹18 in paise
-      currency: "INR",
-      receipt: `receipt_${Date.now()}`,
+      amount,
+      currency,
       payment_capture: 1,
     };
 
-    const order = await instance.orders.create(options);
+    const order = await razorpay.orders.create(options);
 
     return new Response(JSON.stringify(order), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
+    console.error(error);
+    return new Response(JSON.stringify({ error: "Order creation failed" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });

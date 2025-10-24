@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import RazorpayScript from "./RazorpayScript";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,6 +31,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+
+        {/* Razorpay loaded via client component */}
+        <RazorpayScript />
       </body>
     </html>
   );

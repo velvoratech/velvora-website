@@ -1,73 +1,104 @@
 'use client';
-import React, { useEffect,useState } from 'react';
-import { Download, FileCheck, Zap, Shield, Heart } from 'lucide-react';
+import React, { useState } from 'react';
+import { Download, FileCheck, Heart } from 'lucide-react';
 
 export default function ProductsPage() {
+  const [loading, setLoading] = useState(false);
 
-  const [donationSuccess, setDonationSuccess] = useState(false);
+  const handleDonate = async () => {
+    if (!window.Razorpay) {
+      alert("Payment system is loading. Please try again in a moment.");
+      return;
+    }
 
-  // Load Razorpay script dynamically
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
+    setLoading(true);
 
-  // Razorpay handler
-const handleDonate = async () => {
-  try {
-    const res = await fetch("/api/create-order", {
-      method: "POST",
-    });
-    const order = await res.json();
+    try {
+      // Create order on server
+      const res = await fetch("/api/create-order", { 
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
 
-    const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-      amount: order.amount,
-      currency: order.currency,
-      name: "Velvora Technologies",
-      description: "Buy a Cigarette for Hardworking Developer - ₹18 Donation",
-      order_id: order.id,
-      handler: function (response) {
-        alert("✅ Thank you for donating! Payment ID: " + response.razorpay_payment_id);
-      },
-      theme: { color: "#6366f1" },
-    };
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
 
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-  } catch (error) {
-    console.error(error);
-    alert("⚠️ Something went wrong. Please try again.");
-  }
-};
+      const order = await res.json();
 
+      if (order.error) {
+        throw new Error(order.error);
+      }
 
+      // Order created, now open Razorpay
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: order.amount,
+        currency: order.currency,
+        name: "Velvora Technologies",
+        description: "Buy a Cigarette for our Hardworking Developer",
+        order_id: order.id,
+        handler: function (response) {
+          setLoading(false);
+          alert("✅ Thank you for donating! Payment ID: " + response.razorpay_payment_id);
+        },
+        modal: {
+          ondismiss: function () {
+            setLoading(false);
+          },
+        },
+        prefill: {
+          name: "",
+          email: "",
+          contact: ""
+        },
+        theme: { color: "#6366f1" },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+      setLoading(false); // Hide loading once modal opens
+      
+    } catch (error) {
+      console.error("Donation error:", error);
+      setLoading(false);
+      alert("⚠️ Unable to process donation. Please try again or contact support.");
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="text-white text-xl font-semibold">
+              Processing your donation...
+            </div>
+            <div className="text-slate-300 text-sm">
+              This may take a few seconds
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <header className="border-b border-slate-700/50 bg-slate-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2"></div>
-            <a 
-              href="https://velvoratech.com" 
-              className="text-slate-300 hover:text-white transition-colors"
-            >
-              Back to Main Site
-            </a>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between">
+          <div></div>
+          <a href="https://velvoratech.com" className="text-slate-300 hover:text-white transition-colors">
+            Back to Main Site
+          </a>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-4">
-            Our Products
-          </h1>
+          <h1 className="text-5xl font-bold text-white mb-4">Our Products</h1>
         </div>
 
         {/* Product Card */}
@@ -80,91 +111,47 @@ const handleDonate = async () => {
                     <FileCheck className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold text-white mb-2">
-                      File Metadata Changer
-                    </h2>
+                    <h2 className="text-3xl font-bold text-white mb-2">File Metadata Changer</h2>
                   </div>
                 </div>
               </div>
 
               <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                A powerful desktop application that allows you to modify file metadata with ease. 
-                Change creation dates and modification dates quickly and efficiently.
+                A powerful desktop application that allows you to modify file metadata with ease.
               </p>
 
-              {/* Features Grid */}
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="flex items-start space-x-3">
-                  <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Zap className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold mb-1">Fast & Efficient</h3>
-                    <p className="text-slate-400 text-sm">Process files in seconds</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <div className="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-5 h-5 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold mb-1">Safe & Secure</h3>
-                    <p className="text-slate-400 text-sm">No data sent online</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <div className="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FileCheck className="w-5 h-5 text-green-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold mb-1">Easy to Use</h3>
-                    <p className="text-slate-400 text-sm">Intuitive interface</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 relative">
-  {/* Download Button */}
-  <button
-    onClick={() =>
-      window.open(
-        "https://github.com/gautham1024/velvora-exe-releases/releases/download/v1.0.0/File.Metadata.Changer.Setup.exe",
-        "_blank"
-      )
-    }
-    className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center space-x-3 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 group cursor-pointer"
-  >
-    <Download className="w-6 h-6 group-hover:animate-bounce" />
-    <span>Download for Windows</span>
-  </button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://github.com/gautham1024/velvora-exe-releases/releases/download/v1.0.0/File.Metadata.Changer.Setup.exe",
+                      "_blank"
+                    )
+                  }
+                  className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center space-x-3 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl group"
+                >
+                  <Download className="w-6 h-6 group-hover:animate-bounce" />
+                  <span>Download for Windows</span>
+                </button>
 
-  {/* Donate Button */}
-  <button
-    onClick={handleDonate}
-    className="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-rose-600 text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center space-x-3 hover:from-pink-600 hover:to-rose-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-pink-500/25 group cursor-pointer relative overflow-hidden"
-  >
-    <Heart className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-    <span>Buy a Cigarette for Hardworking Developer</span>
-
-    {/* Success message */}
-    {donationSuccess && (
-      <span className="absolute inset-0 flex items-center justify-center bg-green-500 bg-opacity-80 text-white font-semibold text-sm rounded-xl animate-pulse">
-        ✅ Thank you for donating!
-      </span>
-    )}
-  </button>
-</div>
-
-
+                <button
+                  onClick={handleDonate}
+                  className="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-rose-600 text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center space-x-3 hover:from-pink-600 hover:to-rose-700 transition-all duration-300 shadow-lg hover:shadow-xl group"
+                >
+                  <Heart className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                  <span>Buy a Hardworking Dev a Smoke ₹18</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-     
+      <div className="max-w-4xl mx-auto mt-12 px-4 sm:px-6 lg:px-8 text-center">
+  <p className="text-slate-400 text-sm italic">
+    ⚠️ Note: The UI of this page is different from our main site. The designer of the main page is busy with personal matters, and I didn’t want to disturb him 😉
+  </p>
+</div>
     </div>
   );
 }
